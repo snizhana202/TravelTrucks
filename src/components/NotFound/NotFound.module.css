@@ -1,0 +1,79 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-radius: 16px;
+  width: 888px;
+  height: 840px;
+
+  background-color: #f7f7f7;
+}
+
+.notfoundimg {
+  border: none;
+  box-shadow: none;
+  display: block;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  color: #101828;
+  margin: 0;
+  margin-top: 21px;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  color: #101828;
+  margin: 0;
+  margin-bottom: 43px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 32px;
+  border: 1px solid #dadde1;
+  border-radius: 200px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  max-width: 192px;
+  max-height: 56px;
+}
+
+.clearBtn:hover {
+  background-color: #f5f5f5;
+}
+
+.viewBtn {
+  padding: 16px 32px;
+  border-radius: 200px;
+  border: none;
+  background-color: #829b91;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+}
+
+.viewBtn:hover {
+  background-color: #6d7b75;
+}
