@@ -2,7 +2,7 @@ TravelTrucks 🚐
 TravelTrucks — це вебзастосунок для пошуку та оренди кемперів, розроблений як частина навчального проєкту. Він поєднує зручний інтерфейс каталогу з можливістю детальної фільтрації та бронювання транспорту.
 
 🚀 Live Demo
-👉 https://your-project-link.vercel.app
+👉 https://travel-trucks-one-zeta.vercel.app/
 
 🛠 Технології
 Проєкт реалізовано з використанням сучасного стеку технологій:
@@ -26,14 +26,14 @@ Responsive Design: Адаптивна верстка для десктопних
 Клонуйте репозиторій:
 
 Bash
-git clone https://github.com/ВАШ_НІК/travel-trucks.git
+git clone https://github.com/snizhana202/TravelTrucks.git
 cd travel-trucks
-Встановіть залежності:
 
+Встановіть залежності:
 Bash
 npm install
-Запустіть середовище розробки:
 
+Запустіть середовище розробки:
 Bash
 npm run dev
 Відкрийте застосунок:
