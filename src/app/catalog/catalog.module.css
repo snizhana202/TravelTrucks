@@ -1,0 +1,17 @@
+
+.container {
+  display: flex;
+  gap: 64px;
+  padding: 40px 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.list {
+  flex-grow: 1;
+}
