@@ -81,10 +81,10 @@
   border-radius: 100px;
   padding-block: 12px;
   padding-inline: 18px;
-  max-width: 109px;
   max-height: 48px;
   font-size: 16px;
   font-weight: 500;
+  width: fit-content;
 
   background-color: #f2f4f7;
   mix-blend-mode: multiply;
@@ -93,6 +93,7 @@
 .icon {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 }
 
 .button {

@@ -1,13 +1,19 @@
-// components/CamperCard.tsx
 import Image from "next/image";
 import { Camper } from "@/types/camper";
 import styles from "./CamperCard.module.css";
 import { iconMap } from "@/constants/icons";
 
 export default function CamperCard({ camper }: { camper: Camper }) {
+  const StarIcon = iconMap.star;
+  const MapIcon = iconMap.map;
+
   const features = [
-    { label: camper.transmission, key: camper.transmission.toLowerCase() },
-    { label: camper.engine, key: camper.engine.toLowerCase() },
+    {
+      icon: iconMap[camper.transmission.toLowerCase()],
+      label: camper.transmission,
+    },
+    { icon: iconMap[camper.engine.toLowerCase()], label: camper.engine },
+    { icon: iconMap[camper.form.toLowerCase()], label: camper.form },
   ];
 
   return (
@@ -28,16 +34,11 @@ export default function CamperCard({ camper }: { camper: Camper }) {
 
         <div className={styles.info}>
           <div className={styles.rating}>
-            <Image
-              src={camper.rating > 0 ? iconMap.star : iconMap.starDefault}
-              alt="rating"
-              width={16}
-              height={16}
-            />
+            {StarIcon && <StarIcon className={styles.icon} color="#FFC531" />}
             {camper.rating} ({camper.totalReviews} Reviews)
           </div>
           <div className={styles.location}>
-            <Image src={iconMap.map} alt="location" width={16} height={16} />
+            {MapIcon && <MapIcon className={styles.icon} />}
             {camper.location}
           </div>
         </div>
@@ -45,24 +46,14 @@ export default function CamperCard({ camper }: { camper: Camper }) {
         <p className={styles.description}>{camper.description}</p>
 
         <div className={styles.tags}>
-          {features.map((item, index) => {
-            const iconPath = iconMap[item.key];
-
-            return (
-              <span key={index} className={styles.tag}>
-                {iconPath && (
-                  <Image
-                    src={iconPath}
-                    alt={item.label}
-                    width={20}
-                    height={20}
-                    className={styles.icon}
-                  />
-                )}
-                {item.label}
-              </span>
-            );
-          })}
+          {features.map((item, i) => (
+            <span key={i} className={styles.tag}>
+              {item.icon && typeof item.icon === "function" && (
+                <item.icon className={styles.icon} />
+              )}
+              {item.label.replace("_", " ")}
+            </span>
+          ))}
         </div>
 
         <button className={styles.button}>Show more</button>
