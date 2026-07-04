@@ -30,7 +30,7 @@ export default async function CamperDetailsPage({
 
           <div className={styles.infoRow}>
             <div className={styles.rating}>
-              <StarIcon className={styles.icon} />
+              {StarIcon && <StarIcon className={styles.icon} color="#ffc531" />}
               <span>
                 {camper.rating} ({camper.reviews} Reviews)
               </span>
