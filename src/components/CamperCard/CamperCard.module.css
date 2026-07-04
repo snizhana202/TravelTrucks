@@ -28,6 +28,12 @@
   max-width: 524px;
 }
 
+.camperContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .camperHeader {
   display: flex;
   justify-content: space-between;
@@ -46,10 +52,18 @@
 .info {
   display: flex;
   align-items: flex-start;
+  flex-direction: row;
   gap: 16px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+}
+
+.rating,
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .description {
@@ -66,28 +80,6 @@
   -webkit-line-clamp: 1;
   text-overflow: ellipsis;
   word-wrap: break-word;
-}
-
-.tags {
-  display: flex;
-  gap: 8px;
-}
-
-.tag {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  border-radius: 100px;
-  padding-block: 12px;
-  padding-inline: 18px;
-  max-height: 48px;
-  font-size: 16px;
-  font-weight: 500;
-  width: fit-content;
-
-  background-color: #f2f4f7;
-  mix-blend-mode: multiply;
 }
 
 .icon {
