@@ -1,0 +1,61 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #f7f7f7;
+  width: 632px;
+  height: 180px;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 60%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  color: #829b91;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 16;
+  color: #101828;
+}
+
+.starFilled {
+  color: #ffc531;
+}
+
+.starEmpty {
+  color: #dadde1;
+}
+
+.comment {
+  color: #475467;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.starFilled,
+.starEmpty {
+  width: 16px;
+  height: 16px;
+}
