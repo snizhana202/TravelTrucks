@@ -1,11 +1,13 @@
 import styles from "./NotFound.module.css";
 import Image from "next/image";
+import { iconMap } from "@/constants/icons";
 
 export default function EmptyState({
   onClearFilters,
 }: {
   onClearFilters: () => void;
 }) {
+  const CrossIcon = iconMap.cross;
   return (
     <div className={styles.wrapper}>
       <Image
@@ -22,7 +24,7 @@ export default function EmptyState({
       </p>
       <div className={styles.buttonGroup}>
         <button onClick={onClearFilters} className={styles.clearBtn}>
-          <Image src="/icons/close.svg" alt="Clear" width={24} height={24} />
+          {CrossIcon && <CrossIcon size={20} />}
           Clear filters
         </button>
         <button
