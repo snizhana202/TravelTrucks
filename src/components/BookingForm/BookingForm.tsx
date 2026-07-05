@@ -104,9 +104,10 @@ export const BookingForm = ({ camperId }: BookingFormProps) => {
       <form onSubmit={handleSubmit} className={styles.form} noValidate>
         <div className={styles.inputs}>
           <div className={styles.inputWrapper}>
+            {nameError && <label className={styles.label}>Name*</label>}
             <input
               type="text"
-              placeholder="Name*"
+              placeholder={nameError ? "" : "Name*"}
               className={`${styles.input} ${nameError ? styles.inputError : ""}`}
               value={name}
               onChange={handleNameChange}
@@ -117,9 +118,10 @@ export const BookingForm = ({ camperId }: BookingFormProps) => {
             )}
           </div>
           <div className={styles.inputWrapper}>
+            {emailError && <label className={styles.label}>Email*</label>}
             <input
               type="email"
-              placeholder="Email*"
+              placeholder={emailError ? "" : "Email*"}
               className={`${styles.input} ${emailError ? styles.inputError : ""}`}
               value={email}
               onChange={handleEmailChange}
