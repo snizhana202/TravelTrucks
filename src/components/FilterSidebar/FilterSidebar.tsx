@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./FilterSidebar.module.css";
 import Image from "next/image";
+import { CamperFilters } from "@/types/camper";
 
 const FORMS = [
   { label: "Alcove", value: "alcove" },
@@ -27,16 +28,19 @@ export default function FilterSidebar() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [tempFilters, setTempFilters] = useState({
-    location: searchParams.get("location") || "",
-    form: searchParams.get("form") || "",
-    engine: searchParams.get("engine") || "",
-    transmission: searchParams.get("transmission") || "",
+  const [tempFilters, setTempFilters] = useState<CamperFilters>({
+    location: searchParams.get("location") ?? "",
+    form: (searchParams.get("form") as CamperFilters["form"]) || undefined,
+    engine:
+      (searchParams.get("engine") as CamperFilters["engine"]) || undefined,
+    transmission:
+      (searchParams.get("transmission") as CamperFilters["transmission"]) ||
+      undefined,
   });
 
   const [error, setError] = useState("");
 
-  const handleFilterChange = (key: string, value: string) => {
+  const handleFilterChange = (key: keyof CamperFilters, value: string) => {
     if (key === "location") {
       let sanitizedValue = value.replace(/[^a-zA-Z\s-,]/g, "");
 
@@ -59,11 +63,15 @@ export default function FilterSidebar() {
   const applyFilters = () => {
     const params = new URLSearchParams();
 
-    const city = tempFilters.location.split(",")[0].trim();
-    const formattedLocation =
-      city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+    const rawLocation = tempFilters.location?.trim() || "";
 
-    if (formattedLocation) params.set("location", formattedLocation);
+    if (rawLocation) {
+      const city = rawLocation.split(",")[0].trim();
+      const formattedLocation =
+        city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+
+      params.set("location", formattedLocation);
+    }
     if (tempFilters.form) params.set("form", tempFilters.form);
     if (tempFilters.engine) params.set("engine", tempFilters.engine);
     if (tempFilters.transmission)
@@ -73,7 +81,12 @@ export default function FilterSidebar() {
   };
 
   const clearFilters = () => {
-    setTempFilters({ location: "", form: "", engine: "", transmission: "" });
+    setTempFilters({
+      location: "",
+      form: undefined,
+      engine: undefined,
+      transmission: undefined,
+    });
     router.push("/catalog");
   };
 
