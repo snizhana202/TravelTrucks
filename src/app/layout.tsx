@@ -10,6 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen h-full">
+        <div id="portal-root"></div>
         <TanstackProvider>
           <Header />
           <main className="flex-grow w-full h-full">{children}</main>
