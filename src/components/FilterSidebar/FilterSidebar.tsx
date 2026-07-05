@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./FilterSidebar.module.css";
 import Image from "next/image";
 import { CamperFilters } from "@/types/camper";
+import { iconMap } from "@/constants/icons";
 
 const FORMS = [
   { label: "Alcove", value: "alcove" },
@@ -90,21 +91,20 @@ export default function FilterSidebar() {
     router.push("/catalog");
   };
 
+  const MapIcon = iconMap.map;
+  const CrossIcon = iconMap.cross;
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.filters}>
         <div className={styles.chooseLocation}>
           <h3 className={styles.title}>Location</h3>
           <div className={styles.inputWrapper}>
-            <Image
-              src={
-                tempFilters.location ? "/icons/map.svg" : "/icons/map-gray.svg"
-              }
-              alt="Location Icon"
-              width={24}
-              height={24}
-              className={styles.inputIcon}
-            />
+            {MapIcon && (
+              <MapIcon
+                className={`${styles.inputIcon} ${!tempFilters.location ? styles.inactive : ""}`}
+              />
+            )}
             <input
               type="text"
               placeholder="City"
@@ -180,13 +180,7 @@ export default function FilterSidebar() {
           Search
         </button>
         <button onClick={clearFilters} className={styles.clearBtn}>
-          <Image
-            src="/icons/close.svg"
-            alt="Clear"
-            className={styles.clearIcon}
-            width={24}
-            height={24}
-          />
+          {CrossIcon && <CrossIcon className={styles.clearIcon} />}
           Clear filters
         </button>
       </div>

@@ -7,6 +7,7 @@ import { CiMap } from "react-icons/ci";
 import { FaCarBattery, FaCheckCircle } from "react-icons/fa";
 import { TbBus, TbRvTruck } from "react-icons/tb";
 import { FiAlertCircle } from "react-icons/fi";
+import { RxCross2 } from "react-icons/rx";
 
 import {
   TbManualGearboxFilled,
@@ -31,6 +32,8 @@ export const iconMap: Record<string, IconType> = {
   star: HiStar,
   starDefault: HiStar,
   map: CiMap,
+
+  cross: RxCross2,
 
   alert: FiAlertCircle,
   check: FaCheckCircle,
