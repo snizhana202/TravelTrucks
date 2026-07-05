@@ -1,12 +1,17 @@
 .wrapper {
-  max-width: 638px;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .mainSwiper {
   position: relative;
-  height: 505px;
+  height: 100%;
   width: 100%;
+  min-width: 0;
+  flex-grow: 1;
   margin-bottom: 16px;
   border-radius: 17px;
   overflow: hidden;
@@ -46,7 +51,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  display: block;
   overflow: hidden;
   backface-visibility: hidden;
   will-change: transform;

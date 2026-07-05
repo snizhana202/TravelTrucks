@@ -37,8 +37,9 @@ export default function Gallery({
                 src={item.original}
                 alt="Camper"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
-                unoptimized
+                priority={index === 0}
               />
             </div>
           </SwiperSlide>

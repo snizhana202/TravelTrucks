@@ -1,16 +1,30 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  gap: 88px;
+  padding: 64px;
+  margin: 0 auto;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 20px;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 64px;
+    align-items: stretch;
   }
+}
+
+.galleryWrapper {
+  min-width: 0;
+  height: 100%;
 }
 
 .infoWrapper {
@@ -65,4 +79,35 @@
 
 .description {
   color: #475467;
+}
+
+.bookingSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.lowerInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .lowerInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+.reviewsColumn {
+  flex: 0 0 50%;
+}
+
+.formColumn {
+  flex: 0 0 50%;
 }
