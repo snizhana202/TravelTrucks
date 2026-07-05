@@ -1,12 +1,14 @@
 import styles from "./NotFound.module.css";
 import Image from "next/image";
 import { iconMap } from "@/constants/icons";
+import { useRouter } from "next/navigation";
 
 export default function EmptyState({
   onClearFilters,
 }: {
   onClearFilters: () => void;
 }) {
+  const router = useRouter();
   const CrossIcon = iconMap.cross;
   return (
     <div className={styles.wrapper}>
@@ -28,7 +30,7 @@ export default function EmptyState({
           Clear filters
         </button>
         <button
-          onClick={() => (window.location.href = "/catalog")}
+          onClick={() => router.push("/catalog")}
           className={styles.viewBtn}
         >
           View all campers

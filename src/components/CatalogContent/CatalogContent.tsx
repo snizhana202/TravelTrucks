@@ -51,7 +51,7 @@ export default function CatalogContent() {
   return (
     <div className={styles.container}>
       <aside className={styles.sidebar}>
-        <FilterSidebar />
+        <FilterSidebar key={searchParams.toString()} />
       </aside>
       <section className={styles.list}>
         {isEmpty ? (
