@@ -1,0 +1,123 @@
+.formWrapper {
+  border: 1px solid #dadde1;
+  border-radius: 16px;
+  padding: 44px;
+  width: 641px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 18px 42px 18px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  color: #6c717b;
+}
+
+.inputError {
+  border: 1px solid #e44848;
+  background-color: #ffdfdf;
+}
+
+.errorIcon {
+  position: absolute;
+  right: 12px;
+  top: 30px;
+  transform: translateY(-50%);
+  color: #ec383b;
+  font-size: 24px;
+  pointer-events: none;
+}
+
+.errorMessage {
+  color: #e44848;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.button {
+  background-color: #829b91;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 200px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #6d7b75;
+}
+
+.toastMessage {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  font-size: 17px;
+
+  padding: 15px 25px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  animation: toastAnimation 5s ease-in-out forwards;
+}
+
+.checkIcon {
+  color: rgb(72, 224, 72);
+  font-size: 24px;
+}
+
+@keyframes toastAnimation {
+  0% { opacity: 0; transform: translate(-50%, -20px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}
