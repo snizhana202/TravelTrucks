@@ -13,6 +13,7 @@ export default function CamperList({
   campers,
   hasNextPage,
   fetchNextPage,
+  isFetchingNextPage,
 }: CamperListProps) {
   return (
     <div className={styles.list}>
@@ -25,8 +26,9 @@ export default function CamperList({
           <button
             onClick={() => fetchNextPage()}
             className={styles.loadMoreBtn}
+            disabled={isFetchingNextPage}
           >
-            Load more
+           {isFetchingNextPage ? "Loading..." : "Load more"}
           </button>
         </div>
       )}
