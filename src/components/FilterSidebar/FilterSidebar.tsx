@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./FilterSidebar.module.css";
-import Image from "next/image";
 import { CamperFilters } from "@/types/camper";
 import { iconMap } from "@/constants/icons";
 

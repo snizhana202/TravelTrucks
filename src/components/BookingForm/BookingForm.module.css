@@ -47,9 +47,9 @@
 
 .label {
   position: absolute;
-  top: -8px; 
+  top: -8px;
   left: 18px;
-  background-color: #ffdfdf; 
+  background-color: #ffdfdf;
   border-radius: 8px;
   padding: 0 8px;
   font-size: 12px;
@@ -127,8 +127,20 @@
 }
 
 @keyframes toastAnimation {
-  0% { opacity: 0; transform: translate(-50%, -20px); }
-  10% { opacity: 1; transform: translate(-50%, 0); }
-  90% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -20px); }
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
 }

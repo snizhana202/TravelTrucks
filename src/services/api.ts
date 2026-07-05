@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { Review, BookingData } from '@/types/camper';
+import { Review, BookingData } from "@/types/camper";
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -23,7 +23,13 @@ export const fetchReviewsByCamperId = async (id: string): Promise<Review[]> => {
   return data;
 };
 
-export const sendBookingRequest = async (id: string, bookingData: BookingData) => {
-  const { data } = await api.post(`/campers/${id}/booking-requests`, bookingData);
+export const sendBookingRequest = async (
+  id: string,
+  bookingData: BookingData,
+) => {
+  const { data } = await api.post(
+    `/campers/${id}/booking-requests`,
+    bookingData,
+  );
   return data;
 };

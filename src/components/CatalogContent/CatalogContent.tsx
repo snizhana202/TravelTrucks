@@ -11,22 +11,34 @@ export default function CatalogContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const VALID_FORMS = ["alcove", "panel_van", "integrated", "semi_integrated"] as const;
+  const VALID_FORMS = [
+    "alcove",
+    "panel_van",
+    "integrated",
+    "semi_integrated",
+  ] as const;
   const VALID_TRANSMISSIONS = ["automatic", "manual"] as const;
   const VALID_ENGINES = ["diesel", "petrol", "hybrid", "electric"] as const;
 
-  const getValidValue = <T extends string>(value: string | null, validValues: readonly T[]): T | undefined => {
+  const getValidValue = <T extends string>(
+    value: string | null,
+    validValues: readonly T[],
+  ): T | undefined => {
     return validValues.includes(value as T) ? (value as T) : undefined;
   };
 
   const filters = {
     location: searchParams.get("location") || undefined,
     form: getValidValue(searchParams.get("form"), VALID_FORMS),
-    transmission: getValidValue(searchParams.get("transmission"), VALID_TRANSMISSIONS),
+    transmission: getValidValue(
+      searchParams.get("transmission"),
+      VALID_TRANSMISSIONS,
+    ),
     engine: getValidValue(searchParams.get("engine"), VALID_ENGINES),
   };
 
-  const { data, status, fetchNextPage, hasNextPage, isFetchingNextPage } = useCampers(filters);
+  const { data, status, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useCampers(filters);
   const campers = data?.pages.flatMap((p) => p.campers) || [];
   const isEmpty = status === "success" && campers.length === 0;
 

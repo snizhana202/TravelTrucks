@@ -28,7 +28,7 @@ export default function CamperList({
             className={styles.loadMoreBtn}
             disabled={isFetchingNextPage}
           >
-           {isFetchingNextPage ? "Loading..." : "Load more"}
+            {isFetchingNextPage ? "Loading..." : "Load more"}
           </button>
         </div>
       )}
