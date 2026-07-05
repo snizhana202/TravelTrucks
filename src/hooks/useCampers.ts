@@ -19,7 +19,7 @@ const fetchCampers = async ({
 
   const queryParams = new URLSearchParams({
     page: pageParam!.toString(),
-    limit: "4",
+    perPage: "4",
     ...activeFilters,
   }).toString();
 

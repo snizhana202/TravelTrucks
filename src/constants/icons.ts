@@ -4,8 +4,10 @@ import { GiGasPump } from "react-icons/gi";
 import { IconType } from "react-icons";
 import { IoCarSharp } from "react-icons/io5";
 import { CiMap } from "react-icons/ci";
-import { FaCarBattery } from "react-icons/fa";
+import { FaCarBattery, FaCheckCircle } from "react-icons/fa";
 import { TbBus, TbRvTruck } from "react-icons/tb";
+import { FiAlertCircle } from "react-icons/fi";
+
 import {
   TbManualGearboxFilled,
   TbAutomaticGearboxFilled,
@@ -29,4 +31,7 @@ export const iconMap: Record<string, IconType> = {
   star: HiStar,
   starDefault: HiStar,
   map: CiMap,
+
+  alert: FiAlertCircle,
+  check: FaCheckCircle,
 };

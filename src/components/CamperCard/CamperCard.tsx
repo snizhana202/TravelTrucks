@@ -43,10 +43,11 @@ export default function CamperCard({ camper }: { camper: Camper }) {
         <p className={styles.description}>{camper.description}</p>
 
         <CamperFeatures camper={camper} limit={3} />
-
         <Link
           href={`/catalog/${camper.id}`}
           className={styles.button}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Show more
         </Link>

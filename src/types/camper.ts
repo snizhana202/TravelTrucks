@@ -32,3 +32,25 @@ export interface CamperFilters {
   transmission?: "automatic" | "manual";
   engine?: "diesel" | "petrol" | "hybrid" | "electric";
 }
+
+export interface Review {
+  id: string;
+  camperId: string;
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
+  createdAt: string;
+}
+
+export interface BookingData {
+  name: string;
+  email: string;
+}
+
+export interface BookingResponse {
+  message: string;
+}
+
+export interface BookingFormProps {
+  camperId: string;
+}
