@@ -1,9 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./FilterSidebar.module.css";
 import { CamperFilters } from "@/types/camper";
 import { iconMap } from "@/constants/icons";
+
+interface ApiResponse {
+  campers: Array<{
+    location: string;
+  }>;
+}
 
 const FORMS = [
   { label: "Alcove", value: "alcove" },
@@ -28,6 +34,23 @@ export default function FilterSidebar() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const [availableLocations, setAvailableLocations] = useState<string[]>([]);
+
+  useEffect(() => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    fetch(`${baseUrl}/campers`)
+      .then((res) => res.json())
+      .then((data: ApiResponse) => {
+        if (data.campers && Array.isArray(data.campers)) {
+          const locations = [
+            ...new Set(data.campers.map((c) => c.location)),
+          ].sort();
+          setAvailableLocations(locations);
+        }
+      })
+      .catch((err) => console.error("Error:", err));
+  }, []);
+
   const [tempFilters, setTempFilters] = useState<CamperFilters>({
     location: searchParams.get("location") ?? "",
     form: (searchParams.get("form") as CamperFilters["form"]) || undefined,
@@ -42,16 +65,7 @@ export default function FilterSidebar() {
 
   const handleFilterChange = (key: keyof CamperFilters, value: string) => {
     if (key === "location") {
-      let sanitizedValue = value.replace(/[^a-zA-Z\s-,]/g, "");
-
-      if (/^[\s-,]/.test(sanitizedValue)) {
-        sanitizedValue = sanitizedValue.slice(1);
-      }
-
-      sanitizedValue = sanitizedValue.replace(
-        /[\s-]{2,}/g,
-        (match) => match[0],
-      );
+      const sanitizedValue = value.replace(/[^a-zA-Z\s-,]/g, "");
 
       setTempFilters((prev) => ({ ...prev, [key]: sanitizedValue }));
       setError("");
@@ -62,15 +76,10 @@ export default function FilterSidebar() {
 
   const applyFilters = () => {
     const params = new URLSearchParams();
-
     const rawLocation = tempFilters.location?.trim() || "";
 
     if (rawLocation) {
-      const city = rawLocation.split(",")[0].trim();
-      const formattedLocation =
-        city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
-
-      params.set("location", formattedLocation);
+      params.set("location", rawLocation);
     }
     if (tempFilters.form) params.set("form", tempFilters.form);
     if (tempFilters.engine) params.set("engine", tempFilters.engine);
@@ -110,7 +119,13 @@ export default function FilterSidebar() {
               value={tempFilters.location}
               onChange={(e) => handleFilterChange("location", e.target.value)}
               className={`${styles.locationInput} ${error ? styles.inputError : ""}`}
+              list="location-list"
             />
+            <datalist id="location-list">
+              {availableLocations.map((loc) => (
+                <option key={loc} value={loc} />
+              ))}
+            </datalist>
           </div>
           {error && <span className={styles.errorMessage}>{error}</span>}
         </div>
